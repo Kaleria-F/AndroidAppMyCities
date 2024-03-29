@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AndroidAppMyCities.Views.AboutPage"
+             xmlns:vm="clr-namespace:AndroidAppMyCities.ViewModels"
+             Title="{Binding Title}">
+    
+    <ContentPage.BindingContext>
+        <vm:AboutViewModel />
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">#73845A</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <StackLayout BackgroundColor="#73845A" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                <ContentView Padding="20,10,10,20" VerticalOptions="FillAndExpand">
+                    <Image Source="map_main.png" VerticalOptions="Center" HeightRequest="200" />
+                </ContentView>
+            </StackLayout>
+        </StackLayout>
+
+        
+            <SearchBar Placeholder="Найти город" CancelButtonColor="#73845A"
+      PlaceholderColor="#73845A"
+      TextColor="#73845A"
+      TextTransform="Lowercase"/>
+       
+    
+    
+        <ScrollView Grid.Row="1">
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+        <ContentView Padding="20,100,10,20" VerticalOptions="FillAndExpand">
+                <Image Source="MyCities_main_page.png" VerticalOptions="Center" HeightRequest="60" />
+        </ContentView>
+        </StackLayout>
+        </ScrollView>
+
+        <ScrollView Grid.Row="2">
+            <StackLayout Orientation="Vertical" Padding="30,24,30,24" Spacing="10">
+                <Label Text="Города" FontSize="Title"/>
+                
+                <Button Margin="0,10,0,0" Text="Добавить город"
+                        Command="{Binding OpenWebCommand}"
+                        BackgroundColor="{StaticResource Primary}"
+                        TextColor="#73845A" />
+            </StackLayout>
+
+        </ScrollView>
+    </Grid>
+
+</ContentPage>
