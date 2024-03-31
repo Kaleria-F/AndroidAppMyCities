@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AndroidAppMyCities.Models;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -11,7 +13,8 @@ namespace AndroidAppMyCities.Views
         {
             InitializeComponent(); //инициализация компонентов страницы AboutPage
 
-            //подгрузить базу данных
+            CityDatabase database = CityDatabase.Instance; //создание экземпляра класса CityDatabase - базы данных городов
+
 
         }
 

@@ -7,21 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="cities.db" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2196" />  
     <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="cities.db" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Update="Menu.xaml.cs">
       <DependentUpon>Menu.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\AddCitiesPage.xaml.cs">
+      <DependentUpon>AddCitiesPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\CitiesListlPage.xaml.cs">
       <DependentUpon>CitiesListlPage.xaml</DependentUpon>
@@ -35,7 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Views\Add.xaml">
+    <EmbeddedResource Update="Views\AddCitiesPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\MainPage.xaml">

@@ -16,13 +16,16 @@ namespace AndroidAppMyCities.Views
     {
         CitiesViewModel _viewModel;
 
+        //конструктор класса CitiesDescriptionPage для инициализации компонентов
         public CitiesDescriptionPage()
         {
             InitializeComponent();
 
+            //привязка контекста данных к экземпляру класса CitiesViewModel для обновления данных
             BindingContext = _viewModel = new CitiesViewModel();
         }
 
+        //переопределение метода OnAppearing для обновления данных при появлении страницы
         protected override void OnAppearing()
         {
             base.OnAppearing();

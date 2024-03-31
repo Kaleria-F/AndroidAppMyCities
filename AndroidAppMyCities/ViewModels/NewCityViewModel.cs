@@ -47,13 +47,14 @@ namespace AndroidAppMyCities.ViewModels
             await Shell.Current.GoToAsync("..");
         }
 
+        //тут изменить способ добавления (сюда будет поступать из поисковика)
+
         private async void OnSave()
         {
             City newItem = new City()
             {
-                Name = Name,
-                Description = Description,
-                //ID
+                
+              
             };
 
             await DataStore.AddCity(newItem);
