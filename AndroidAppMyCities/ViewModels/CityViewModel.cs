@@ -10,10 +10,10 @@ namespace AndroidAppMyCities.ViewModels
 
     public class CityViewModel : BaseViewModel
     {
-        private string cityId;
+        private int cityId;
         private string cityName;
         private string description;
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         public string Name
         {
@@ -27,7 +27,7 @@ namespace AndroidAppMyCities.ViewModels
             set => SetProperty(ref description, value);
         }
 
-        public string CityId
+        public int CityId
         {
             get
             {
@@ -36,8 +36,13 @@ namespace AndroidAppMyCities.ViewModels
             set
             {
                 cityId = value;
-                LoadICityId(value);
+                loadCityId(value);
             }
+        }
+
+        private void loadCityId(int value)
+        {
+            throw new NotImplementedException();
         }
 
         public async void LoadICityId(string cityId)
@@ -45,13 +50,14 @@ namespace AndroidAppMyCities.ViewModels
             try
             {
                 var city = await DataStore.GetICity(cityId);
-                Id = city.Id;
+
                 Name = city.Name;
                 Description = city.Description;
+                Id = city.Id;
             }
             catch (Exception)
             {
-                Debug.WriteLine("Failed to Load city");
+                Debug.WriteLine("Ошибка при загрузке города");
             }
         }
     }

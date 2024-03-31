@@ -4,24 +4,20 @@
              x:Class="AndroidAppMyCities.Views.AboutPage"
              xmlns:vm="clr-namespace:AndroidAppMyCities.ViewModels"
              Title="{Binding Title}">
-    
+
     <ContentPage.BindingContext>
         <vm:AboutViewModel />
     </ContentPage.BindingContext>
-    
+
     <ContentPage.Resources>
         <ResourceDictionary>
             <Color x:Key="Accent">#73845A</Color>
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
 
-        <StackLayout BackgroundColor="#73845A" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+    <StackLayout BackgroundColor="White" >
+        <StackLayout BackgroundColor="#73845A" >
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
                 <ContentView Padding="20,10,10,20" VerticalOptions="FillAndExpand">
                     <Image Source="map_main.png" VerticalOptions="Center" HeightRequest="200" />
@@ -29,33 +25,30 @@
             </StackLayout>
         </StackLayout>
 
-        
-            <SearchBar Placeholder="Найти город" CancelButtonColor="#73845A"
-      PlaceholderColor="#73845A"
-      TextColor="#73845A"
-      TextTransform="Lowercase"/>
-       
-    
-    
-        <ScrollView Grid.Row="1">
-        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
-        <ContentView Padding="20,100,10,20" VerticalOptions="FillAndExpand">
-                <Image Source="MyCities_main_page.png" VerticalOptions="Center" HeightRequest="60" />
-        </ContentView>
+        <StackLayout >
+            <RelativeLayout HorizontalOptions="Center">
+                <ContentView  Padding="30,40,10,0" VerticalOptions="FillAndExpand">
+                    <Image Source="MyCities_main_page.png" VerticalOptions="Center" HeightRequest="120" />
+                </ContentView>
+            </RelativeLayout>
+
+            <RelativeLayout HorizontalOptions="Center">
+                <Frame Padding="50,20,50,20" BackgroundColor="#73845A" CornerRadius="20" HasShadow="True">
+                    <Label Text="счетчик" FontSize="Large" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" />
+                </Frame>
+            </RelativeLayout>
+
+            <RelativeLayout HorizontalOptions="Center">
+                <Button RelativeLayout.YConstraint="100" Margin="20,20,20,20" CornerRadius="10" Text="Добавить город" Clicked="Button_Clicked"
+                    Command="{Binding AddCityCommand}" 
+                    BackgroundColor="{StaticResource Primary}"
+                    TextColor="#73845A" />
+            </RelativeLayout>
+
         </StackLayout>
-        </ScrollView>
 
-        <ScrollView Grid.Row="2">
-            <StackLayout Orientation="Vertical" Padding="30,24,30,24" Spacing="10">
-                <Label Text="Города" FontSize="Title"/>
-                
-                <Button Margin="0,10,0,0" Text="Добавить город"
-                        Command="{Binding OpenWebCommand}"
-                        BackgroundColor="{StaticResource Primary}"
-                        TextColor="#73845A" />
-            </StackLayout>
 
-        </ScrollView>
-    </Grid>
+    </StackLayout>
+
 
 </ContentPage>

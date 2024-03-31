@@ -51,9 +51,9 @@ namespace AndroidAppMyCities.ViewModels
         {
             City newItem = new City()
             {
-                Id = Guid.NewGuid().ToString(),
                 Name = Name,
-                Description = Description
+                Description = Description,
+                //ID
             };
 
             await DataStore.AddCity(newItem);

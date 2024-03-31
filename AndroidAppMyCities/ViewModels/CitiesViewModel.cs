@@ -78,7 +78,7 @@ namespace AndroidAppMyCities.ViewModels
                 return;
 
             // This will push the ItemDetailPage onto the navigation stack
-            await Shell.Current.GoToAsync($"{nameof(ItemDetailPage)}?{nameof(CityViewModel.CityId)}={city.Id}");
+            await Shell.Current.GoToAsync($"{nameof(CitiesListlPage)}?{nameof(CityViewModel.CityId)}={city.Id}");
         }
     }
 }

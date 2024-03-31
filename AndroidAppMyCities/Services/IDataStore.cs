@@ -9,7 +9,7 @@ namespace AndroidAppMyCities.Services
     {
         Task<bool> AddCity(T city);
         Task<bool> UpdateDescription(T city);
-        Task<bool> DeleteCity(string name); 
+        Task<bool> DeleteCity(string name);
         Task<T> GetICity(string name);
 
         //для получения всех городов из списка

@@ -12,11 +12,11 @@ using Xamarin.Forms.Xaml;
 
 namespace AndroidAppMyCities.Views
 {
-    public partial class ItemsPage : ContentPage
+    public partial class CitiesDescriptionPage : ContentPage
     {
         CitiesViewModel _viewModel;
 
-        public ItemsPage()
+        public CitiesDescriptionPage()
         {
             InitializeComponent();
 

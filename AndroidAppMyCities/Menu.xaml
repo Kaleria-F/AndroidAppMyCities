@@ -26,8 +26,8 @@
 
     <TabBar>
         <ShellContent Title="Города" Icon="icon_about.png" Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />
-       
-        <ShellContent Title="Рейтинг" Icon="icon_feed.png" ContentTemplate="{DataTemplate local:ItemsPage}" />
+
+        <ShellContent Title="Рейтинг" Icon="icon_feed.png" ContentTemplate="{DataTemplate local:CitiesDescriptionPage}"/>
     </TabBar>
 
     <!--

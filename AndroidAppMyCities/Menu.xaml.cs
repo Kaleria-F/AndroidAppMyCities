@@ -14,7 +14,7 @@ namespace AndroidAppMyCities
             //инициализация компонентов
             InitializeComponent();
             //регистрация маршрутов
-            Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
+            Routing.RegisterRoute(nameof(CitiesListlPage), typeof(CitiesListlPage));
             Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
         }
 

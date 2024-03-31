@@ -10,11 +10,19 @@ namespace AndroidAppMyCities.Views
         public AboutPage()
         {
             InitializeComponent(); //инициализация компонентов страницы AboutPage
+
+            //подгрузить базу данных
+
         }
 
-        //<SearchBar Placeholder="Найти город" CancelButtonColor="#73845A" PlaceholderColor="#73845A"TextColor="#73845A" TextTransform="Lowercase"/>
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new AddCitiesPage()); //переход на страницу AddCityPage
+        }
 
-        
+
+
+
 
     }
 }
