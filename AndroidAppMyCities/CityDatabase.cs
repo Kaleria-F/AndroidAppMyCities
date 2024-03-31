@@ -6,6 +6,7 @@ using System.Linq;
 using static System.Net.Mime.MediaTypeNames;
 using System.Globalization;
 using System.Reflection;
+using System.Xml.Linq;
 
 namespace AndroidAppMyCities
 {
@@ -20,7 +21,7 @@ namespace AndroidAppMyCities
         public CityDatabase()
         {
             citiesNames = new List<string>();
-            LoadCitiesFromFile("citiesFordDB.csv");
+            LoadCitiesFromFile("cities.xml");
         }
 
         public static CityDatabase Instance
@@ -37,25 +38,18 @@ namespace AndroidAppMyCities
 
         public void LoadCitiesFromFile(string filePath)
         {
-            var resourceName = "AndroidAppMyCities.citiesFordDB.csv";
+            var resourceName = "AndroidAppMyCities.cities.xml";
             var assembly = Assembly.GetExecutingAssembly();
             using (Stream stream = assembly.GetManifestResourceStream(resourceName))
             using (StreamReader reader = new StreamReader(stream))
             {
-                //string result = reader.ReadToEnd();
+                XDocument xdoc = XDocument.Load(reader);
 
-                if (reader != null)
-                {
-                    using (var csv = new CsvReader(reader, CultureInfo.CurrentCulture))
-                    {
-                        while (csv.Read())
-                        {
-                            citiesNames.Add(file[1]);
-                        }
-                    }
-                }
-
+                citiesNames = xdoc.Descendants("Name")
+                   .Select(element => element.Value)
+                   .ToList();
             }
+
         }
 
         //метод для получения списка имен городов из базы данных
