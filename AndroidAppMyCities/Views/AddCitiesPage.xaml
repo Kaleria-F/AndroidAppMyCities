@@ -5,7 +5,12 @@
              >
     <StackLayout>
         <SearchBar x:Name="CitySearch"
-                   TextChanged ="CitySearch_SearchButtonPressed"/>
-        <ListView x:Name="CityList" ItemsSource="{Binding Cities}"/>
+                   TextChanged ="CitySearch_SearchButtonPressed"
+                   PlaceholderColor="#73845A"
+                   TextColor ="#891d29"
+                   Placeholder="Введите название города"
+                   />
+        <ListView x:Name="CityList" ItemsSource="{Binding Cities}"
+                  />
     </StackLayout>
 </ContentPage>

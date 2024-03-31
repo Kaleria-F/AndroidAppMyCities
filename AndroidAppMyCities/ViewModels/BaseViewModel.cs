@@ -44,7 +44,7 @@ namespace AndroidAppMyCities.ViewModels
         }
 
        
-        //событие PropertyChanged, которое вызывается при изменении свойства объекта
+        
         #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propertyName = "")

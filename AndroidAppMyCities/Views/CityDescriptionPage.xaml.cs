@@ -28,7 +28,7 @@ namespace AndroidAppMyCities.Views
         //переопределение метода OnAppearing для обновления данных при появлении страницы
         protected override void OnAppearing()
         {
-            base.OnAppearing();
+            base.OnAppearing(); 
             _viewModel.OnAppearing();
         }
     }

@@ -18,28 +18,25 @@ namespace AndroidAppMyCities.Views
 
     {
         public List<string> citiesList;
-       // List<string> citiList = new List<string> { "Moscow", "London", "Paris", "Berlin", "Madrid", "Rome", "Prague", "Vienna", "Amsterdam", "Warsaw", "Budapest", "Stockholm", "Oslo", "Copenhagen", "Helsinki", "Dublin", "Lisbon", "Athens", "Brussels", "Luxembourg", "Bern", "Monaco", "Andorra la Vella", "San Marino", "Vatican City" };
- 
+
         public AddCitiesPage()
         {
             //инициализация компонентов страницы AddCitiesPage
             InitializeComponent();
-            
+
             CityDatabase database = CityDatabase.Instance; //создание экземпляра класса CityDatabase - базы данных городов
             citiesList = database.GetCitiesNames(); //получение списка названий городов из базы данных
-
-         
-            
-            //CityList.ItemsSource = citiList; //привязка списка городов к элементу CityList
             CityList.ItemsSource = citiesList; //привязка списка городов к элементу CityList
+
+            CityList.ItemTapped += CityList_ItemTapped;
         }
 
 
         private void CitySearch_SearchButtonPressed(object sender, EventArgs e)
         {
             string key = CitySearch.Text; //получение текста из элемента CitySearch
-            //проверять на пустоту
-            
+
+
             if (string.IsNullOrEmpty(key))
             {
                 //выводить в строку поиска "Введите название города"
@@ -47,11 +44,18 @@ namespace AndroidAppMyCities.Views
                 return;
             }
 
-            IEnumerable<string> searchResult= citiesList.Where(name => name.ToLower().Contains(key.ToLower())); //поиск городов по ключу
-
-            //IEnumerable<string> searchRes = citiList.Where(name => name.ToLower().Contains(key.ToLower())); //поиск городов по ключу
+            IEnumerable<string> searchResult = citiesList.Where(name => name.ToLower().Contains(key.ToLower())); //поиск городов по ключу
 
             CityList.ItemsSource = searchResult; //привязка результата поиска к элементу CityList
+        }
+
+        private void CityList_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            // Получение выбранного города
+            var selectedCity = e.Item as string;
+
+            // Переход на новую страницу
+            Navigation.PushAsync(new NewItemPage(selectedCity));
         }
     }
 }

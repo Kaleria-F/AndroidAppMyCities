@@ -14,17 +14,13 @@ namespace AndroidAppMyCities.ViewModels
 
         public NewICityViewModel()
         {
-            SaveCommand = new Command(OnSave, ValidateSave);
-            CancelCommand = new Command(OnCancel);
+            SaveCommand = new Command(OnSave); //вызов метода OnSave при нажатии на кнопку
+            CancelCommand = new Command(OnCancel); //вызов метода OnCancel при нажатии на кнопку
             this.PropertyChanged +=
-                (_, __) => SaveCommand.ChangeCanExecute();
+                (_, __) => SaveCommand.ChangeCanExecute(); //проверка на возможность нажатия кнопки
         }
 
-        private bool ValidateSave()
-        {
-            return !String.IsNullOrWhiteSpace(name)
-                && !String.IsNullOrWhiteSpace(description);
-        }
+
 
         public string Name
         {
@@ -38,8 +34,8 @@ namespace AndroidAppMyCities.ViewModels
             set => SetProperty(ref description, value);
         }
 
-        public Command SaveCommand { get; }
-        public Command CancelCommand { get; }
+        public Command SaveCommand { get; } //команда для кнопки сохранения
+        public Command CancelCommand { get; } //команда для кнопки отмены
 
         private async void OnCancel()
         {
@@ -48,13 +44,12 @@ namespace AndroidAppMyCities.ViewModels
         }
 
         //тут изменить способ добавления (сюда будет поступать из поисковика)
-
-        private async void OnSave()
+        private async void OnSave() //метод для сохранения данных
         {
-            City newItem = new City()
+            City newItem = new City() //создание нового экземпляра класса City
             {
-                
-              
+                Name = Name, //передача названия города
+                Description = Description //передача описания города
             };
 
             await DataStore.AddCity(newItem);

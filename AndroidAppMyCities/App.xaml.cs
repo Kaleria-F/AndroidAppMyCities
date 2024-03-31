@@ -14,10 +14,7 @@ namespace AndroidAppMyCities
         {
             InitializeComponent();
 
-            //var db = CityDatabase.GetInstance("cities.db");
-            //var cities = db.LoadCities();
-
-            DependencyService.Register<MockDataStore>();
+            DependencyService.Register<MockDataStore>(); 
             MainPage = new Menu();
 
         }

@@ -10,24 +10,16 @@ namespace AndroidAppMyCities.Models
         public string Name { get; set; }
         public string Description { get; set; }
 
-        public string District { get; set; }
 
-
-        public City(string name, string district)
+        public City(string name, string description)
         {
             Id = ++_idCounter;
             Name = name;
-            District = district;
-            Description = string.Empty;
+            Description = description;
         }
 
-        //конструктор по умолчанию -удалить потом
         public City()
         {
-            Id = ++_idCounter;
-            Name = string.Empty;
-            District = string.Empty;
-            Description = string.Empty;
         }
     }
 }

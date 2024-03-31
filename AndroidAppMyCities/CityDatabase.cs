@@ -22,6 +22,8 @@ namespace AndroidAppMyCities
         {
             citiesNames = new List<string>();
             LoadCitiesFromFile("cities.xml");
+            citiesNames.Sort();
+            citiesNames.RemoveAll(string.IsNullOrWhiteSpace);
         }
 
         public static CityDatabase Instance
