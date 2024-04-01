@@ -11,6 +11,7 @@ namespace AndroidAppMyCities.Services
     {
         readonly List<City> yourCities;
 
+
         public MockDataStore()
         {
             yourCities = new List<City>() { };
@@ -20,7 +21,6 @@ namespace AndroidAppMyCities.Services
         {
             ///для добавления нового города в список
             yourCities.Add(city);
-
             return await Task.FromResult(true);
         }
 
@@ -30,7 +30,9 @@ namespace AndroidAppMyCities.Services
             var oldItem = yourCities.Where((City arg) => arg.Id == city.Id).FirstOrDefault();
             yourCities.Remove(oldItem);
             yourCities.Add(city);
-
+            
+            
+            
             return await Task.FromResult(true);
         }
 
@@ -59,6 +61,12 @@ namespace AndroidAppMyCities.Services
         public Task<City> GetICity(string name)
         {
             throw new NotImplementedException();
+        }
+
+        //для получения количиства городов с уникальным именем в списке городов
+        public int GetCountCity()
+        {
+            return yourCities.Select(city => city.Name).Count();
         }
     }
 }

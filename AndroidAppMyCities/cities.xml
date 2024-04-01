@@ -780,6 +780,18 @@
     <District>Ивановская</District>
     <Name>Заволжск</Name>
   </row>
+	<row>
+		<District>Москва</District>
+		<Name>Москва</Name>
+	</row>
+	<row>
+		<District>Санкт-Петербург</District>
+		<Name>Санкт-Петербург</Name>
+	</row>
+	<row>
+		<District>Севастополь</District>
+		<Name>Севастополь</Name>
+	</row>
   <row>
     <District>Ивановская</District>
     <Name>Иваново</Name>

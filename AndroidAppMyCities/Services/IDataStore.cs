@@ -14,5 +14,6 @@ namespace AndroidAppMyCities.Services
 
         //для получения всех городов из списка
         Task<IEnumerable<T>> GetICity(bool forceRefresh = false);
+
     }
 }

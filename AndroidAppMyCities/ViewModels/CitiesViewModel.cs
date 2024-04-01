@@ -19,7 +19,7 @@ namespace AndroidAppMyCities.ViewModels
 
         public CitiesViewModel()
         {
-            Title = "Browse";
+            Title = "Города";
             Items = new ObservableCollection<City>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 

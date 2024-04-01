@@ -1,4 +1,5 @@
 ﻿using AndroidAppMyCities.Models;
+using AndroidAppMyCities.Services;
 using AndroidAppMyCities.ViewModels;
 using AndroidAppMyCities.Views;
 using System;
@@ -28,8 +29,8 @@ namespace AndroidAppMyCities.Views
         //переопределение метода OnAppearing для обновления данных при появлении страницы
         protected override void OnAppearing()
         {
-            base.OnAppearing(); 
-            _viewModel.OnAppearing();
+            base.OnAppearing();  //вызов метода OnAppearing базового класса
+            _viewModel.OnAppearing(); //вызов метода OnAppearing класса CitiesViewModel
         }
 
         private void Button_Clicked(object sender, EventArgs e)

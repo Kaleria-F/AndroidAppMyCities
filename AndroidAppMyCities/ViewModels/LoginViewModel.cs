@@ -17,7 +17,7 @@ namespace AndroidAppMyCities.ViewModels
 
         private async void OnLoginClicked(object obj)
         {
-           // префиксация с `//` переключает на другой стек навигации вместо того, чтобы добавлять к активному
+           
             await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
         }
     }
