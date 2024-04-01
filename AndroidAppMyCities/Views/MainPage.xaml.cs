@@ -23,7 +23,20 @@ namespace AndroidAppMyCities.Views
 
         private void Button_Clicked2(object sender, EventArgs e)
         {
-          
+            CitiesViewModel citiesViewModel = new CitiesViewModel(); //создание объекта класса CitiesViewModel
+            int courn = citiesViewModel.GetCountCities();
+
+            ///подсчет и вывод чисел тысяч сотен десятков и единиц
+            int t = courn / 1000;
+            int s = (courn - t * 1000) / 100;
+            int d = (courn - t * 1000 - s * 100) / 10;
+            int e1 = courn - t * 1000 - s * 100 - d * 10;
+
+            thousand.Text = t.ToString();
+            hundred.Text = s.ToString();
+            dozen.Text = d.ToString();
+            units.Text = e1.ToString();
+
         }
         
     }

@@ -8,37 +8,56 @@ using Xamarin.Forms;
 
 namespace AndroidAppMyCities.ViewModels
 {
+    /// <summary>
+    /// Класс CitiesViewModel для отображения списка городов.
+    /// </summary>
     public class CitiesViewModel : BaseViewModel
     {
         private City _selectedItem;
+        private int countCities;
 
-        public ObservableCollection<City> Items { get; }
+        //метод для получения количества городов
+        public int GetCountCities()
+        {
+            return countCities;
+        }
+
+        public ObservableCollection<City> Cities { get; }
         public Command LoadItemsCommand { get; }
         public Command AddItemCommand { get; }
         public Command<City> ItemTapped { get; }
 
+        /// <summary>
+        /// Конструктор класса CitiesViewModel.
+        /// </summary>
         public CitiesViewModel()
         {
             Title = "Города";
-            Items = new ObservableCollection<City>();
+            Cities = new ObservableCollection<City>();
+            countCities = Cities.Count;
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
-            ItemTapped = new Command<City>(OnItemSelected);
+            //ItemTapped = new Command<City>(OnItemSelected); //метод добавлен для дальнейшей модернизации программы
 
-            AddItemCommand = new Command(OnAddItem);
+            AddItemCommand = new Command(OnAddItem); 
         }
 
+        /// <summary>
+        /// Метод ExecuteLoadItemsCommand для загрузки списка городов.
+        /// </summary>
+        /// <returns></returns>
         async Task ExecuteLoadItemsCommand()
         {
             IsBusy = true;
 
             try
             {
-                Items.Clear();
-                var items = await DataStore.GetICity(true);
-                foreach (var item in items)
+                Cities.Clear();
+                var cities = await DataStore.GetICity(true);
+                foreach (var city in cities)
                 {
-                    Items.Add(item);
+                    Cities.Add(city);
+                    countCities++;
                 }
             }
             catch (Exception ex)
@@ -51,6 +70,9 @@ namespace AndroidAppMyCities.ViewModels
             }
         }
 
+        /// <summary>
+        /// Метод OnAppearing для отображения списка городов.
+        /// </summary>
         public void OnAppearing()
         {
             IsBusy = true;
@@ -77,7 +99,6 @@ namespace AndroidAppMyCities.ViewModels
             if (city == null)
                 return;
 
-            // This will push the ItemDetailPage onto the navigation stack
             await Shell.Current.GoToAsync($"{nameof(CitiesListlPage)}?{nameof(CityViewModel.CityId)}={city.Id}");
         }
     }

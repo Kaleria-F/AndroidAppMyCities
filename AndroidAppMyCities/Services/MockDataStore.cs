@@ -11,13 +11,22 @@ namespace AndroidAppMyCities.Services
     /// </summary>
     public class MockDataStore : IDataStore<City>
     {
+        /// <summary>
+        /// Список городов.
+        /// </summary>
         readonly List<City> yourCities;
-       
+       /// <summary>
+       /// Конструктор класса MockDataStore.
+       /// </summary>
         public MockDataStore()
         {
             yourCities = new List<City>() { };
         }
-
+        /// <summary>
+        /// Метод AddCity для добавления нового города в список.
+        /// </summary>
+        /// <param name="city"> Объект типа City. </param>
+        /// <returns> Возвращает true. </returns>
         public async Task<bool> AddCity(City city)
         {
             ///для добавления нового города в список
@@ -26,44 +35,25 @@ namespace AndroidAppMyCities.Services
             return await Task.FromResult(true);
             
         }
-
-        //для обновления описания города в списке
-        public async Task<bool> UpdateDescription(City city)
-        {
-            var oldItem = yourCities.Where((City arg) => arg.Id == city.Id).FirstOrDefault();
-            yourCities.Remove(oldItem);
-            yourCities.Add(city);
-            
-            
-            
-            return await Task.FromResult(true);
-        }
-
-        //для удаления города из списка
-        public async Task<bool> DeleteCity(int id)
-        {
-            var oldItem = yourCities.Where((City arg) => arg.Id == id).FirstOrDefault();
-            yourCities.Remove(oldItem);
-
-            return await Task.FromResult(true);
-        }
-
-        //для получения всех городов
+        /// <summary>
+        /// Метод GetICity для получения списка городов.
+        /// </summary>
+        /// <param name="forceRefresh"> Параметр для обновления списка городов. </param>
+        /// <returns> Возвращает список городов. </returns>
         public async Task<IEnumerable<City>> GetICity(bool forceRefresh = false)
         {
-            return await Task.FromResult(yourCities); //возвращает список городов
+            return await Task.FromResult(yourCities);
         }
 
-        //для удаления города по имени
-        public Task<bool> DeleteCity(string name)
-        {
-            throw new NotImplementedException();
-        }
-
-        //для получения города по имени
+        /// <summary>
+        /// Метод GetICity для получения города по имени.
+        /// </summary>
+        /// <param name="name"> Название города. </param>
+        /// <returns> Возвращает город. </returns>
+        /// <exception cref="NotImplementedException"></exception>
         public Task<City> GetICity(string name)
         {
             throw new NotImplementedException();
         }
-             }
+    }
 }

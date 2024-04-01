@@ -8,11 +8,14 @@ using Xamarin.Forms;
 
 namespace AndroidAppMyCities.ViewModels
 {
-
-//базовый класс для всех ViewModel
+    /// <summary>
+    /// Класс BaseViewModel для управления свойствами и событиями.
+    /// </summary>
     public class BaseViewModel : INotifyPropertyChanged
     {
-        //свойство DataStore типа IDataStore<City> для доступа к данным о городах
+       /// <summary>
+       /// Поле DataStore для хранения данных о городах.
+       /// </summary>
         public IDataStore<City> DataStore => DependencyService.Get<IDataStore<City>>();
 
         bool isBusy = false;
@@ -28,27 +31,26 @@ namespace AndroidAppMyCities.ViewModels
             get { return title; }
             set { SetProperty(ref title, value); }
         }
-
-        //метод SetProperty<T> для установки значения свойства и вызова события PropertyChanged
+        /// <summary>
+        /// Метод SetProperty для установки значения свойства
+        /// </summary>
+        /// <typeparam name="T"> Тип свойства. </typeparam>
+        /// <param name="backingStore"> Поле для хранения значения свойства. </param>
+        /// <param name="value"> Новое значение свойства. </param>
+        /// <param name="propertyName"> Имя свойства. </param>
+        /// <param name="onChanged"> Действие, которое будет выполнено при изменении свойства. </param>
+        /// <returns></returns>
         protected bool SetProperty<T>(ref T backingStore, T value,
             [CallerMemberName] string propertyName = "",
             Action onChanged = null)
         {
-            //проверка на равенство значений свойств и нового значения value
             if (EqualityComparer<T>.Default.Equals(backingStore, value))
                 return false;
-
-            //присваивание нового значения backingStore
             backingStore = value;
-            //вызов события PropertyChanged для уведомления об изменении свойства propertyName 
             onChanged?.Invoke();
-            //вызов метода OnPropertyChanged для уведомления об изменении свойства propertyName 
             OnPropertyChanged(propertyName);
             return true;
         }
-
-       
-        
         #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
