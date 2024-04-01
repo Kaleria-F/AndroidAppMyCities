@@ -9,6 +9,9 @@ using Xamarin.Forms.Xaml;
 
 namespace AndroidAppMyCities.Views
 {
+    /// <summary>
+    /// Метод AboutPage, отвечающий за отображение страницы "О приложении".
+    /// </summary>
     public partial class AboutPage : ContentPage
     {
         public AboutPage()
@@ -16,20 +19,25 @@ namespace AndroidAppMyCities.Views
             InitializeComponent(); //инициализация компонентов страницы AboutPage
         }
 
+        /// <summary>
+        /// Метод Button_Clicked, вызываемый при нажатии на кнопку "Добавить город".
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new AddCitiesPage()); //переход на страницу AddCityPage
+            Navigation.PushAsync(new AddCitiesPage());
         }
 
-        private void Button_Clicked2(object sender, EventArgs e)
+        /// <summary>
+        /// Метод OnAppearing, вызываемый при отображении страницы для обновления данных.
+        /// </summary>
+        protected override async void OnAppearing()
         {
-            //создание экземпляра класса Counter 
-
+            base.OnAppearing();
             CounterModel counter = new CounterModel();
-            //выгрущить кол-во городов из списка MockDataStore
             int courn = counter.GetCount();
 
-            ///подсчет и вывод чисел тысяч сотен десятков и единиц
             int t = courn / 1000;
             int s = (courn - t * 1000) / 100;
             int d = (courn - t * 1000 - s * 100) / 10;
@@ -40,7 +48,9 @@ namespace AndroidAppMyCities.Views
             dozen.Text = d.ToString();
             units.Text = e1.ToString();
 
+            await ProgressCountryBar.ProgressTo(courn / 1000.0, 900, Easing.Linear);
         }
-        
+
+
     }
 }

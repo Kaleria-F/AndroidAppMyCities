@@ -25,16 +25,12 @@
     </Shell.Resources>
 
     <TabBar>
-        <ShellContent Title="Города" Icon="icon_about.png" Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />
+        <ShellContent Title="Мои города" Icon="icon_main_page.png" Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />
 
-        <ShellContent Title="Рейтинг" Icon="icon_feed.png" ContentTemplate="{DataTemplate local:CitiesDescriptionPage}"/>
+        <ShellContent Title="Мои поездки" Icon="icon_cities_list.png" ContentTemplate="{DataTemplate local:CitiesDescriptionPage}"/>
     </TabBar>
 
-    <!--
-        If you would like to navigate to this content you can do so by calling
-        await Shell.Current.GoToAsync("//LoginPage");
-    -->
-   
+
     <TabBar>
         <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" />
     </TabBar>

@@ -17,16 +17,28 @@
 
 
     <StackLayout BackgroundColor="White" >
-        <StackLayout BackgroundColor="#73845A" >
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
-                <ContentView Padding="20,10,10,20" VerticalOptions="FillAndExpand">
-                    <Image Source="map_main.png" VerticalOptions="Center" HeightRequest="200" />
-                </ContentView>
+       
+        <RelativeLayout>
+            <StackLayout BackgroundColor="#73845A" >
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                    <ContentView Padding="20,10,10,20" VerticalOptions="FillAndExpand">
+                        <Image Source="map_main.png" VerticalOptions="Center" HeightRequest="200" />
+                    </ContentView>
+                </StackLayout>
+                <ProgressBar RelativeLayout.YConstraint="40" x:Name="ProgressCountryBar"
+                 Progress="{Binding ProgressCountry}"
+                 ProgressColor="White"
+                 Margin="35,0,30,20"
+                 HorizontalOptions="FillAndExpand"
+                 VerticalOptions="Center" />
+                
             </StackLayout>
-        </StackLayout>
+
+
+        </RelativeLayout>
 
         <RelativeLayout HorizontalOptions="Center">
-            <ContentView  Padding="35,30,0,0" VerticalOptions="FillAndExpand">
+            <ContentView  Padding="35,0,0,0" VerticalOptions="FillAndExpand">
                 <Image Source="MyCities_main_page.png" VerticalOptions="Center" HeightRequest="100" />
             </ContentView>
         </RelativeLayout>
@@ -36,27 +48,25 @@
             <Frame RelativeLayout.XConstraint="85" Padding="20,20,20,20" BackgroundColor="#73845A" CornerRadius="17" HasShadow="True">
                 <Label x:Name="thousand"   FontSize="Large" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" />
             </Frame>
-            <Frame RelativeLayout.XConstraint="145" Padding="20,20,20,20" BackgroundColor="#73845A" CornerRadius="17" HasShadow="True">
+            <Frame RelativeLayout.XConstraint="147" Padding="20,20,20,20" BackgroundColor="#73845A" CornerRadius="17" HasShadow="True">
                 <Label  x:Name="hundred"  FontSize="Large" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" />
             </Frame>
-            <Frame RelativeLayout.XConstraint="205" Padding="20,20,20,20" BackgroundColor="#73845A" CornerRadius="17" HasShadow="True">
+            <Frame RelativeLayout.XConstraint="208" Padding="20,20,20,20" BackgroundColor="#73845A" CornerRadius="17" HasShadow="True">
                 <Label x:Name="dozen"   FontSize="Large" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" />
             </Frame>
-            <Frame RelativeLayout.XConstraint="265" Padding="20,20,20,20" BackgroundColor="#73845A" CornerRadius="17" HasShadow="True">
+            <Frame RelativeLayout.XConstraint="270" Padding="20,20,20,20" BackgroundColor="#73845A" CornerRadius="17" HasShadow="True">
                 <Label x:Name="units"   FontSize="Large" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" />
             </Frame>
-            <Button RelativeLayout.XConstraint="300" RelativeLayout.YConstraint="100" Margin="10,10,10,10" CornerRadius="100" Text="О" Clicked="Button_Clicked2"
-                 Command="{Binding AddCityCommand}" 
-                 BackgroundColor="{StaticResource Primary}"
-                 TextColor="#73845A" />
         </RelativeLayout>
 
       
 
         <RelativeLayout HorizontalOptions="Center">
-            <Button RelativeLayout.YConstraint="0" Margin="20,20,20,20" CornerRadius="10" Text="Добавить город" Clicked="Button_Clicked"
+            <Button  Margin="20,20,20,20" CornerRadius="15" Text="Добавить город" Clicked="Button_Clicked"
             Command="{Binding AddCityCommand}" 
+            FontSize="Subtitle" 
             BackgroundColor="{StaticResource Primary}"
+            WidthRequest="240" HeightRequest="70"
             TextColor="#73845A" />
         </RelativeLayout>
 
