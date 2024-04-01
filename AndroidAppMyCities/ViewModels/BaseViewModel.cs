@@ -34,11 +34,15 @@ namespace AndroidAppMyCities.ViewModels
             [CallerMemberName] string propertyName = "",
             Action onChanged = null)
         {
+            //проверка на равенство значений свойств и нового значения value
             if (EqualityComparer<T>.Default.Equals(backingStore, value))
                 return false;
 
+            //присваивание нового значения backingStore
             backingStore = value;
+            //вызов события PropertyChanged для уведомления об изменении свойства propertyName 
             onChanged?.Invoke();
+            //вызов метода OnPropertyChanged для уведомления об изменении свойства propertyName 
             OnPropertyChanged(propertyName);
             return true;
         }

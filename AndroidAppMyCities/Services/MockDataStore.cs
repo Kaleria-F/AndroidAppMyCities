@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace AndroidAppMyCities.Services
 {
-    //класс для хранения данных о городах в виде списка
+    /// <summary>
+    /// Класс MockDataStore для хранения данных о городах в списке.
+    /// </summary>
     public class MockDataStore : IDataStore<City>
     {
         readonly List<City> yourCities;
-
-
+       
         public MockDataStore()
         {
             yourCities = new List<City>() { };
@@ -21,7 +22,9 @@ namespace AndroidAppMyCities.Services
         {
             ///для добавления нового города в список
             yourCities.Add(city);
+           
             return await Task.FromResult(true);
+            
         }
 
         //для обновления описания города в списке
@@ -48,7 +51,7 @@ namespace AndroidAppMyCities.Services
         //для получения всех городов
         public async Task<IEnumerable<City>> GetICity(bool forceRefresh = false)
         {
-            return await Task.FromResult(yourCities);
+            return await Task.FromResult(yourCities); //возвращает список городов
         }
 
         //для удаления города по имени
@@ -62,11 +65,5 @@ namespace AndroidAppMyCities.Services
         {
             throw new NotImplementedException();
         }
-
-        //для получения количиства городов с уникальным именем в списке городов
-        public int GetCountCity()
-        {
-            return yourCities.Select(city => city.Name).Count();
-        }
-    }
+             }
 }

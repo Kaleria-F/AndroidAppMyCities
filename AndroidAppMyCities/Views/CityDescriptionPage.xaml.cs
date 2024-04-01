@@ -13,29 +13,42 @@ using Xamarin.Forms.Xaml;
 
 namespace AndroidAppMyCities.Views
 {
+    /// <summary>
+    /// Класс CitiesDescriptionPage, представляющий страницу с описанием городов и их характеристик.
+    /// </summary>
     public partial class CitiesDescriptionPage : ContentPage
     {
+        /// <summary>
+        /// Экземпляр класса CitiesViewModel для обновления данных.
+        /// </summary>
         CitiesViewModel _viewModel;
 
-        //конструктор класса CitiesDescriptionPage для инициализации компонентов
+        /// <summary>
+        /// Конструктор класса CitiesDescriptionPage.
+        /// </summary>
         public CitiesDescriptionPage()
         {
             InitializeComponent();
-
-            //привязка контекста данных к экземпляру класса CitiesViewModel для обновления данных
             BindingContext = _viewModel = new CitiesViewModel();
         }
 
-        //переопределение метода OnAppearing для обновления данных при появлении страницы
+        /// <summary>
+        /// Метод OnAppearing, вызываемый при отображении страницы для обновления данных.
+        /// </summary>
         protected override void OnAppearing()
         {
-            base.OnAppearing();  //вызов метода OnAppearing базового класса
-            _viewModel.OnAppearing(); //вызов метода OnAppearing класса CitiesViewModel
+            base.OnAppearing();  
+            _viewModel.OnAppearing();
         }
 
+        /// <summary>
+        /// Метод Button_Clicked, вызываемый при нажатии на кнопку "Добавить" со станицы уже добавленных городов.
+        /// </summary>
+        /// <param name="sender"> Объект, который вызывает событие. </param>
+        /// <param name="e"> Параметры события. </param>
         private void Button_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new AddCitiesPage()); //переход на страницу AddCityPage
+            Navigation.PushAsync(new AddCitiesPage());
         }
     }
 }

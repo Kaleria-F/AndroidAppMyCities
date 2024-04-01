@@ -2,6 +2,9 @@
 
 namespace AndroidAppMyCities.Models
 {
+    /// <summary>
+    /// Класс City для создания объектов городов.
+    /// </summary>
     public class City
     {
 
@@ -10,7 +13,11 @@ namespace AndroidAppMyCities.Models
         public string Name { get; set; }
         public string Description { get; set; }
 
-
+        /// <summary>
+        /// Конструктор для создания объекта города.
+        /// </summary>
+        /// <param name="name">Название города</param>
+        /// <param name="description">Описание города</param>
         public City(string name, string description)
         {
             Id = ++_idCounter;
@@ -18,8 +25,6 @@ namespace AndroidAppMyCities.Models
             Description = description;
         }
 
-        public City()
-        {
-        }
+        public City() { }
     }
 }
