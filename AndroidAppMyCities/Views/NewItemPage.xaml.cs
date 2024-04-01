@@ -16,18 +16,18 @@ namespace AndroidAppMyCities.Views
         {
             InitializeComponent();
 
-            cityName.Text = city.ToString();
+            cityName.Text = city.ToString(); //передача названия города в текстовое поле 
+
 
 
             //создание экземпляра класса City и передача в конструктор названия города
             yourCity = new City
             {
-                Name = city
-                //передать название города в строку Текст
-
+                Name = city,
+                
             };
 
-            BindingContext = new NewICityViewModel(); //для обновления данных на странице
+            BindingContext = new NewICityViewModel(city.ToString()); //для обновления данных на странице
         }
     }
 }

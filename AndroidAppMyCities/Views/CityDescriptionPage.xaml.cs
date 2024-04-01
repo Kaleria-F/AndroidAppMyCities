@@ -31,5 +31,10 @@ namespace AndroidAppMyCities.Views
             base.OnAppearing(); 
             _viewModel.OnAppearing();
         }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new AddCitiesPage()); //переход на страницу AddCityPage
+        }
     }
 }

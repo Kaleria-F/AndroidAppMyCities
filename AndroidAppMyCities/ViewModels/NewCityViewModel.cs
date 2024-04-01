@@ -9,12 +9,12 @@ namespace AndroidAppMyCities.ViewModels
 {
     public class NewICityViewModel : BaseViewModel
     {
-        private string name;
+        //private string name;
         private string description;
 
-        public NewICityViewModel()
+        public NewICityViewModel(string name)
         {
-            SaveCommand = new Command(OnSave); //вызов метода OnSave при нажатии на кнопку
+            SaveCommand = new Command(() => OnSave(name), () => !IsBusy); //вызов метода OnSave при нажатии на кнопку
             CancelCommand = new Command(OnCancel); //вызов метода OnCancel при нажатии на кнопку
             this.PropertyChanged +=
                 (_, __) => SaveCommand.ChangeCanExecute(); //проверка на возможность нажатия кнопки
@@ -22,11 +22,7 @@ namespace AndroidAppMyCities.ViewModels
 
 
 
-        public string Name
-        {
-            get => name;
-            set => SetProperty(ref name, value);
-        }
+       
 
         public string Description
         {
@@ -44,11 +40,12 @@ namespace AndroidAppMyCities.ViewModels
         }
 
         //тут изменить способ добавления (сюда будет поступать из поисковика)
-        private async void OnSave() //метод для сохранения данных
+        private async void OnSave(string name) //метод для сохранения данных
         {
+
             City newItem = new City() //создание нового экземпляра класса City
             {
-                Name = Name, //передача названия города
+                Name = name, //передача названия города
                 Description = Description //передача описания города
             };
 

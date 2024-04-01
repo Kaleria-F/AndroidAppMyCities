@@ -13,7 +13,7 @@ namespace AndroidAppMyCities.Views
         {
             InitializeComponent(); //инициализация компонентов страницы AboutPage
 
-            CityDatabase database = CityDatabase.Instance; //создание экземпляра класса CityDatabase - базы данных городов
+            //CityDatabase database = CityDatabase.Instance; //создание экземпляра класса CityDatabase - базы данных городов
 
 
         }

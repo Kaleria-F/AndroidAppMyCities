@@ -9,7 +9,7 @@
     <ContentPage.Content>
         <StackLayout Spacing="10" Padding="20">
             <Label  Text="Город" FontSize="Medium"/>
-            <Label  x:Name="cityName" FontSize="Medium" />
+            <Label x:Name="cityName"  FontSize="Medium" />
             <Label Text="Ваши воспоминания" FontSize="Medium" />
             <Editor Text="{Binding Description, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
             <StackLayout Orientation="Horizontal">
