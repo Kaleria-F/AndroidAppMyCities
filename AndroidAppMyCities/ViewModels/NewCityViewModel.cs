@@ -21,9 +21,6 @@ namespace AndroidAppMyCities.ViewModels
         }
 
 
-
-       
-
         public string Description
         {
             get => description;

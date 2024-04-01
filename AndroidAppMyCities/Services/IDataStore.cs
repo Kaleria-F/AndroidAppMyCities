@@ -14,5 +14,8 @@ namespace AndroidAppMyCities.Services
         Task<T> GetICity(string name);
         Task<IEnumerable<T>> GetICity(bool forceRefresh = false);
 
+        int GetCityCount();
+
+
     }
 }

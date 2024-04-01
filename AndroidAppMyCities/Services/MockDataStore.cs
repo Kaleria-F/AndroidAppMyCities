@@ -15,9 +15,10 @@ namespace AndroidAppMyCities.Services
         /// Список городов.
         /// </summary>
         readonly List<City> yourCities;
-       /// <summary>
-       /// Конструктор класса MockDataStore.
-       /// </summary>
+        public static int count;
+        /// <summary>
+        /// Конструктор класса MockDataStore.
+        /// </summary>
         public MockDataStore()
         {
             yourCities = new List<City>() { };
@@ -31,7 +32,7 @@ namespace AndroidAppMyCities.Services
         {
             ///для добавления нового города в список
             yourCities.Add(city);
-           
+            count++;
             return await Task.FromResult(true);
             
         }
@@ -54,6 +55,11 @@ namespace AndroidAppMyCities.Services
         public Task<City> GetICity(string name)
         {
             throw new NotImplementedException();
+        }
+
+        public int GetCityCount()
+        {
+            return count;
         }
     }
 }

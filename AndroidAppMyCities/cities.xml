@@ -28,6 +28,10 @@
     <District>Алтайский</District>
     <Name>Бийск</Name>
   </row>
+	<row>
+		<District>Крым</District>
+		<Name>Крым</Name>
+	</row>
   <row>
     <District>Алтайский</District>
     <Name>Горняк</Name>

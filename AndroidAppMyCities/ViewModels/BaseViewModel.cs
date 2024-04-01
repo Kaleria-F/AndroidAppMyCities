@@ -16,7 +16,7 @@ namespace AndroidAppMyCities.ViewModels
        /// <summary>
        /// Поле DataStore для хранения данных о городах.
        /// </summary>
-        public IDataStore<City> DataStore => DependencyService.Get<IDataStore<City>>();
+        public IDataStore<City> DataStore => DependencyService.Get<IDataStore<City>>(); 
 
         bool isBusy = false;
         public bool IsBusy

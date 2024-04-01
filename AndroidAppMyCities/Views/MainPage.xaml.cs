@@ -23,8 +23,11 @@ namespace AndroidAppMyCities.Views
 
         private void Button_Clicked2(object sender, EventArgs e)
         {
-            CitiesViewModel citiesViewModel = new CitiesViewModel(); //создание объекта класса CitiesViewModel
-            int courn = citiesViewModel.GetCountCities();
+            //создание экземпляра класса Counter 
+
+            CounterModel counter = new CounterModel();
+            //выгрущить кол-во городов из списка MockDataStore
+            int courn = counter.GetCount();
 
             ///подсчет и вывод чисел тысяч сотен десятков и единиц
             int t = courn / 1000;
