@@ -5,16 +5,14 @@ using Xamarin.Forms;
 
 namespace AndroidAppMyCities.ViewModels
 {
-    
-    //класс AboutViewModel для отображения информации о приложении 
+    /// <summary>
+    /// Класс AboutViewModel для отображения информации о приложении.
+    /// </summary>
     public class AboutViewModel : BaseViewModel
     {
         public AboutViewModel()
         {
-            Title = "Главная";
-            //OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://aka.ms/xamarin-quickstart"));
+            
         }
-
-        public ICommand OpenWebCommand { get; }
     }
 }

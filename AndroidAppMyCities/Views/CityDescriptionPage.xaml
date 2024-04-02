@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AndroidAppMyCities.Views.ItemsPage"
-             Title="{Binding Title}"
+             x:Class="AndroidAppMyCities.Views.CitiesDescriptionPage"
+             Title="Мои города"
              xmlns:local="clr-namespace:AndroidAppMyCities.ViewModels"  
              xmlns:model="clr-namespace:AndroidAppMyCities.Models"  
              x:Name="BrowseItemsPage">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" Command="{Binding AddItemCommand}" />
+        <ToolbarItem Text="добавить" Command="{Binding AddCityCommand}" Clicked="Button_Clicked" />
     </ContentPage.ToolbarItems>
     <!--
       x:DataType enables compiled bindings for better performance and compile time validation of binding expressions.
@@ -16,26 +16,23 @@
     -->
     <RefreshView x:DataType="local:CitiesViewModel" Command="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
         <CollectionView x:Name="ItemsListView"
-                ItemsSource="{Binding Items}"
+                ItemsSource="{Binding Cities}"
                 SelectionMode="None">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <StackLayout Padding="10" x:DataType="model:City">
+                    <StackLayout Padding="20" x:DataType="model:City">
                         <Label Text="{Binding Name}" 
                             LineBreakMode="NoWrap" 
                             Style="{DynamicResource ListItemTextStyle}" 
-                            FontSize="16" />
+                            FontSize="18"
+                            TextColor="#891d29"/>
                         <Label Text="{Binding Description}" 
                             LineBreakMode="NoWrap"
                             Style="{DynamicResource ListItemDetailTextStyle}"
-                            FontSize="13" />
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer 
-                                NumberOfTapsRequired="1"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:CitiesViewModel}}, Path=ItemTapped}"		
-                                CommandParameter="{Binding .}">
-                            </TapGestureRecognizer>
-                        </StackLayout.GestureRecognizers>
+                            FontSize="14"
+                            TextColor="#73845A"
+                            FontAttributes="Italic"
+                            />
                     </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

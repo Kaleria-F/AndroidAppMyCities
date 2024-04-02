@@ -10,12 +10,24 @@ namespace AndroidAppMyCities.Views
 {
     public partial class NewItemPage : ContentPage
     {
-        public City Item { get; set; }
+        public City YourCity { get; set; } 
 
-        public NewItemPage()
+        public NewItemPage(string city)
         {
             InitializeComponent();
-            BindingContext = new NewICityViewModel();
+
+            cityName.Text = city.ToString(); //передача названия города в текстовое поле 
+
+
+
+            //создание экземпляра класса City и передача в конструктор названия города
+            YourCity = new City
+            {
+                Name = city,
+                
+            };
+
+            BindingContext = new NewICityViewModel(city.ToString()); //для обновления данных на странице
         }
     }
 }

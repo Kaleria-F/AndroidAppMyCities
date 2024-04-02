@@ -8,12 +8,15 @@ using Xamarin.Forms;
 
 namespace AndroidAppMyCities.ViewModels
 {
-
-//базовый класс для всех ViewModel
+    /// <summary>
+    /// Класс BaseViewModel для управления свойствами и событиями.
+    /// </summary>
     public class BaseViewModel : INotifyPropertyChanged
     {
-        //свойство DataStore типа IDataStore<City> для доступа к данным о городах
-        public IDataStore<City> DataStore => DependencyService.Get<IDataStore<City>>();
+       /// <summary>
+       /// Поле DataStore для хранения данных о городах.
+       /// </summary>
+        public IDataStore<City> DataStore => DependencyService.Get<IDataStore<City>>(); 
 
         bool isBusy = false;
         public bool IsBusy
@@ -28,23 +31,26 @@ namespace AndroidAppMyCities.ViewModels
             get { return title; }
             set { SetProperty(ref title, value); }
         }
-
-        //метод SetProperty<T> для установки значения свойства и вызова события PropertyChanged
+        /// <summary>
+        /// Метод SetProperty для установки значения свойства
+        /// </summary>
+        /// <typeparam name="T"> Тип свойства. </typeparam>
+        /// <param name="backingStore"> Поле для хранения значения свойства. </param>
+        /// <param name="value"> Новое значение свойства. </param>
+        /// <param name="propertyName"> Имя свойства. </param>
+        /// <param name="onChanged"> Действие, которое будет выполнено при изменении свойства. </param>
+        /// <returns></returns>
         protected bool SetProperty<T>(ref T backingStore, T value,
             [CallerMemberName] string propertyName = "",
             Action onChanged = null)
         {
             if (EqualityComparer<T>.Default.Equals(backingStore, value))
                 return false;
-
             backingStore = value;
             onChanged?.Invoke();
             OnPropertyChanged(propertyName);
             return true;
         }
-
-       
-        //событие PropertyChanged, которое вызывается при изменении свойства объекта
         #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propertyName = "")

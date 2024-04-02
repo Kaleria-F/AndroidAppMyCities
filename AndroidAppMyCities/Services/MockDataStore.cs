@@ -6,56 +6,59 @@ using System.Threading.Tasks;
 
 namespace AndroidAppMyCities.Services
 {
-    //класс для хранения данных о городах в виде списка
-    public class MockDataStore : IDataStore <City>
+    /// <summary>
+    /// Класс MockDataStore для хранения данных о городах в списке.
+    /// </summary>
+    public class MockDataStore : IDataStore<City>
     {
-        readonly List<City> items;
-
+        /// <summary>
+        /// Список городов.
+        /// </summary>
+        readonly List<City> yourCities;
+        /// <summary>
+        /// Конструктор класса MockDataStore.
+        /// </summary>
         public MockDataStore()
         {
-            items = new List<City>()
-            {
-                new City { Id = Guid.NewGuid().ToString(), Name = "Пример", Description="Мой первый город" },
-            };
+            yourCities = new List<City>() { };
         }
-
+        /// <summary>
+        /// Метод AddCity для добавления нового города в список.
+        /// </summary>
+        /// <param name="city"> Объект типа City. </param>
+        /// <returns> Возвращает true. </returns>
         public async Task<bool> AddCity(City city)
         {
             ///для добавления нового города в список
-            items.Add(city);
+            yourCities.Add(city);
 
             return await Task.FromResult(true);
+            
         }
-
-       //для обновления описания города в списке
-        public async Task<bool> UpdateDescription(City city)
-        {
-            var oldItem = items.Where((City arg) => arg.Id == city.Id).FirstOrDefault();
-            items.Remove(oldItem);
-            items.Add(city);
-
-            return await Task.FromResult(true);
-        }
-
-        //для удаления города из списка
-        public async Task<bool> DeleteCity(string id)
-        {
-            var oldItem = items.Where((City arg) => arg.Id == id).FirstOrDefault();
-            items.Remove(oldItem);
-
-            return await Task.FromResult(true);
-        }
-
-        //для получения города по id
-        public async Task<City> GetICity(string id)
-        {
-            return await Task.FromResult(items.FirstOrDefault(s => s.Id == id));
-        }
-
-        //для получения всех городов
+        /// <summary>
+        /// Метод GetICity для получения списка городов.
+        /// </summary>
+        /// <param name="forceRefresh"> Параметр для обновления списка городов. </param>
+        /// <returns> Возвращает список городов. </returns>
         public async Task<IEnumerable<City>> GetICity(bool forceRefresh = false)
         {
-            return await Task.FromResult(items);
+            return await Task.FromResult(yourCities);
+        }
+
+        /// <summary>
+        /// Метод GetICity для получения города по имени.
+        /// </summary>
+        /// <param name="name"> Название города. </param>
+        /// <returns> Возвращает город. </returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public Task<City> GetICity(string name)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int GetCityCount()
+        {
+            return yourCities.GroupBy(x => x.Name).Count();
         }
     }
 }

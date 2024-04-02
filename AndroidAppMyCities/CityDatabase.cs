@@ -1,53 +1,64 @@
 ﻿using AndroidAppMyCities.Models;
+using System.Collections.Generic;
+using System;
+using System.IO;
+using System.Linq;
+using static System.Net.Mime.MediaTypeNames;
+using System.Globalization;
+using System.Reflection;
+using System.Xml.Linq;
 
 namespace AndroidAppMyCities
 {
     //класс для хранения данных о городах в базе данных
     public class CityDatabase
     {
-        public CityDatabase()
-        {
-            //конструктор класса CityDatabase
-
-        }
-
-        //конструктор класса CityDatabase с параметром пути к базе данных
-        public CityDatabase(string databasePath)
-        {
-            
-        }
-      
+   
+        private List<string> citiesNames;
+        private static CityDatabase instance;
         
 
-        //метод для добавления города в базу данных
-        public bool AddCity(City city)
+        public CityDatabase()
         {
-            return false;
-        }
-       
-
-        //метод для получения города по имени
-        public City GetCity(string name)
-        {
-            return null;
+            citiesNames = new List<string>();
+            LoadCitiesFromFile("cities.xml");
+            citiesNames.Sort();
+            citiesNames.RemoveAll(string.IsNullOrWhiteSpace);
         }
 
-        //метод для получения всех городов из базы данных
-        public City[] GetCities()
+        public static CityDatabase Instance
         {
-            return null;
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new CityDatabase();
+                }
+                return instance;
+            }
         }
 
-   
-
-        //метод для получения всех городов из базы данных
-        public City[] GetCities(string district, string name)
+        public void LoadCitiesFromFile(string filePath)
         {
-            return null;
+            var resourceName = "AndroidAppMyCities.cities.xml";
+            var assembly = Assembly.GetExecutingAssembly();
+            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                XDocument xdoc = XDocument.Load(reader);
+
+                citiesNames = xdoc.Descendants("Name")
+                   .Select(element => element.Value)
+                   .ToList();
+            }
+
         }
 
-        //метод для получения всех городов из базы данных
-
-   
+        //метод для получения списка имен городов из базы данных
+        public List<string> GetCitiesNames()
+        {
+            return citiesNames;
+                       
+        }
     }
 }

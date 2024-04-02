@@ -4,9 +4,9 @@ using Xamarin.Forms;
 
 namespace AndroidAppMyCities.Views
 {
-    public partial class ItemDetailPage : ContentPage
+    public partial class CitiesListlPage : ContentPage
     {
-        public ItemDetailPage()
+        public CitiesListlPage()
         {
             InitializeComponent();
             BindingContext = new CityViewModel();

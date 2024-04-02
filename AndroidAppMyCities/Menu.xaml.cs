@@ -6,16 +6,21 @@ using Xamarin.Forms;
 
 namespace AndroidAppMyCities
 {
-    //класс AppShell для создания главного меню приложения
+    /// <summary>
+    /// Класс Menu для создания главного меню приложения внизу страниц.
+    /// </summary>
     public partial class Menu : Xamarin.Forms.Shell
     {
         public Menu()
         {
-            //инициализация компонентов
             InitializeComponent();
-            //регистрация маршрутов
-            Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
+            Routing.RegisterRoute(nameof(CitiesListlPage), typeof(CitiesListlPage));
             Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
+
+            //предусмотрена возможность регистрации маршрута для страницы регистрации пользователя для будущей модернизации приложения
+            //Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
+            //<ShellContent Title="Регистрация" Icon="icon_cities_list.png" ContentTemplate="{DataTemplate local:LoginPage}"/>
+
         }
 
     }

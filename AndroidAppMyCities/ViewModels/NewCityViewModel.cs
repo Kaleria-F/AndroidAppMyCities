@@ -9,28 +9,17 @@ namespace AndroidAppMyCities.ViewModels
 {
     public class NewICityViewModel : BaseViewModel
     {
-        private string name;
+        //private string name;
         private string description;
 
-        public NewICityViewModel()
+        public NewICityViewModel(string name)
         {
-            SaveCommand = new Command(OnSave, ValidateSave);
-            CancelCommand = new Command(OnCancel);
+            SaveCommand = new Command(() => OnSave(name), () => !IsBusy); //вызов метода OnSave при нажатии на кнопку
+            CancelCommand = new Command(OnCancel); //вызов метода OnCancel при нажатии на кнопку
             this.PropertyChanged +=
-                (_, __) => SaveCommand.ChangeCanExecute();
+                (_, __) => SaveCommand.ChangeCanExecute(); //проверка на возможность нажатия кнопки
         }
 
-        private bool ValidateSave()
-        {
-            return !String.IsNullOrWhiteSpace(name)
-                && !String.IsNullOrWhiteSpace(description);
-        }
-
-        public string Name
-        {
-            get => name;
-            set => SetProperty(ref name, value);
-        }
 
         public string Description
         {
@@ -38,8 +27,8 @@ namespace AndroidAppMyCities.ViewModels
             set => SetProperty(ref description, value);
         }
 
-        public Command SaveCommand { get; }
-        public Command CancelCommand { get; }
+        public Command SaveCommand { get; } //команда для кнопки сохранения
+        public Command CancelCommand { get; } //команда для кнопки отмены
 
         private async void OnCancel()
         {
@@ -47,13 +36,14 @@ namespace AndroidAppMyCities.ViewModels
             await Shell.Current.GoToAsync("..");
         }
 
-        private async void OnSave()
+        //тут изменить способ добавления (сюда будет поступать из поисковика)
+        private async void OnSave(string name) //метод для сохранения данных
         {
-            City newItem = new City()
+
+            City newItem = new City() //создание нового экземпляра класса City
             {
-                Id = Guid.NewGuid().ToString(),
-                Name = Name,
-                Description = Description
+                Name = name, //передача названия города
+                Description = Description //передача описания города
             };
 
             await DataStore.AddCity(newItem);
