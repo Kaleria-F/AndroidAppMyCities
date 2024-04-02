@@ -2,8 +2,11 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AndroidAppMyCities.Views.AboutPage"
-             xmlns:vm="clr-namespace:AndroidAppMyCities.ViewModels"
-             Title="{Binding Title}">
+             xmlns:vm="clr-namespace:AndroidAppMyCities.ViewModels">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem  IconImageSource="icon_info.png" Clicked="Button_Set"  />
+    </ContentPage.ToolbarItems>
 
     <ContentPage.BindingContext>
         <vm:AboutViewModel />
@@ -14,6 +17,8 @@
             <Color x:Key="Accent">#73845A</Color>
         </ResourceDictionary>
     </ContentPage.Resources>
+
+
 
 
     <StackLayout BackgroundColor="White" >

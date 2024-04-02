@@ -51,6 +51,10 @@ namespace AndroidAppMyCities.Views
             await ProgressCountryBar.ProgressTo(courn / 1000.0, 900, Easing.Linear);
         }
 
-
+        private void Button_Set(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new SetPage());
+        }
+        
     }
 }

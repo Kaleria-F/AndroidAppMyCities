@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AndroidAppMyCities.Views.SetPage"
+             Title="Настройки">
+
+    <StackLayout Padding="10">
+
+        <Button Text="Инструкция" Clicked="OnInstructionClicked" 
+                FontSize="Subtitle" 
+                BackgroundColor="{StaticResource Primary}"
+                WidthRequest="240" 
+                TextColor="#73845A"/>
+        <Button Text="Выгрузить список городов" Clicked="OnCityListDownloadClicked"
+                FontSize="Subtitle" 
+                BackgroundColor="{StaticResource Primary}"
+                TextColor="#73845A"/>
+        <Button Text="Регистрация" Clicked="OnRegistrationClicked"
+                FontSize="Subtitle" 
+                BackgroundColor="{StaticResource Primary}"
+                WidthRequest="240" 
+                TextColor="#73845A"/>
+        <Button Text="Обратная связь" Clicked="FeedbackClicked"
+                FontSize="Subtitle" 
+                BackgroundColor="{StaticResource Primary}"
+                WidthRequest="240" 
+                TextColor="#73845A"/>
+    </StackLayout>
+
+</ContentPage>

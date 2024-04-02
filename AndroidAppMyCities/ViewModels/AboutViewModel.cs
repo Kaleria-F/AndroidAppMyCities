@@ -12,7 +12,7 @@ namespace AndroidAppMyCities.ViewModels
     {
         public AboutViewModel()
         {
-            Title = "Главная";
+            
         }
     }
 }

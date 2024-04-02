@@ -10,7 +10,7 @@ namespace AndroidAppMyCities.Views
 {
     public partial class NewItemPage : ContentPage
     {
-        public City yourCity { get; set; } 
+        public City YourCity { get; set; } 
 
         public NewItemPage(string city)
         {
@@ -21,7 +21,7 @@ namespace AndroidAppMyCities.Views
 
 
             //создание экземпляра класса City и передача в конструктор названия города
-            yourCity = new City
+            YourCity = new City
             {
                 Name = city,
                 

@@ -17,5 +17,10 @@ namespace AndroidAppMyCities.Views
             InitializeComponent();
             this.BindingContext = new LoginViewModel();
         }
+
+        //код для кнопки 
+        /*<StackLayout Padding="10,0,10,0" VerticalOptions="Center">
+            <Button VerticalOptions="Center" Text="Зарегистрироваться" Command="{Binding LoginCommand}"/>
+        </StackLayout>*/
     }
 }

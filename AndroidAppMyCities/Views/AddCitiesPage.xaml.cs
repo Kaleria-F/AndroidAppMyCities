@@ -21,40 +21,32 @@ namespace AndroidAppMyCities.Views
 
         public AddCitiesPage()
         {
-            //инициализация компонентов страницы AddCitiesPage
             InitializeComponent();
 
-            CityDatabase database = CityDatabase.Instance; //создание экземпляра класса CityDatabase - базы данных городов
-            citiesList = database.GetCitiesNames(); //получение списка названий городов из базы данных
-            CityList.ItemsSource = citiesList; //привязка списка городов к элементу CityList
+            CityDatabase database = CityDatabase.Instance;
+            citiesList = database.GetCitiesNames();
+            CityList.ItemsSource = citiesList;
 
             CityList.ItemTapped += CityList_ItemTapped;
         }
-
-
         private void CitySearch_SearchButtonPressed(object sender, EventArgs e)
         {
-            string key = CitySearch.Text; //получение текста из элемента CitySearch
-
+            string key = CitySearch.Text;
 
             if (string.IsNullOrEmpty(key))
             {
-                //выводить в строку поиска "Введите название города"
                 CitySearch.Placeholder = "Введите название города";
                 return;
             }
 
-            IEnumerable<string> searchResult = citiesList.Where(name => name.ToLower().Contains(key.ToLower())); //поиск городов по ключу
+            IEnumerable<string> searchResult = citiesList.Where(name => name.ToLower().Contains(key.ToLower()));
 
-            CityList.ItemsSource = searchResult; //привязка результата поиска к элементу CityList
+            CityList.ItemsSource = searchResult;
         }
-
         private void CityList_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            // Получение выбранного города
             var selectedCity = e.Item as string;
 
-            // Переход на новую страницу
             Navigation.PushAsync(new NewItemPage(selectedCity));
         }
     }

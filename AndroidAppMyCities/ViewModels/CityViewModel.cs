@@ -36,11 +36,11 @@ namespace AndroidAppMyCities.ViewModels
             set
             {
                 cityId = value;
-                loadCityId(value);
+                LoadCityId(value);
             }
         }
 
-        private void loadCityId(int value)
+        private void LoadCityId(int value)
         {
             throw new NotImplementedException();
         }
