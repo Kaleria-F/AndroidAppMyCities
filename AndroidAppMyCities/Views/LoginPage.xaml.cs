@@ -18,9 +18,16 @@ namespace AndroidAppMyCities.Views
             this.BindingContext = new LoginViewModel();
         }
 
+        private void OnWebsiteClicked(object sender, EventArgs e)
+        {
+            Device.OpenUri(new Uri("https://t.me/Kaleria_f"));
+
+        }
         //код для кнопки 
         /*<StackLayout Padding="10,0,10,0" VerticalOptions="Center">
             <Button VerticalOptions="Center" Text="Зарегистрироваться" Command="{Binding LoginCommand}"/>
         </StackLayout>*/
+
+
     }
 }

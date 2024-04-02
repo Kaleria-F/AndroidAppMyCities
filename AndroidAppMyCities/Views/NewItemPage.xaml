@@ -9,15 +9,20 @@
     <ContentPage.Content>
         <StackLayout Spacing="10" Padding="20">
             <Label  Text="Ваш город:" FontSize="Medium" TextColor="#891d29"/>
-            <Label x:Name="cityName"  FontSize="Medium" TextColor="#73845A" />
+            <Label x:Name="cityName"  FontSize="Medium" TextColor="#73845A" FontAttributes="Italic" />
             <Label Text="Ваши воспоминания:" FontSize="Medium" TextColor="#891d29"/>
-            <Editor Text="{Binding Description, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
+            <Editor Text="{Binding Description, Mode=TwoWay}"
+                    AutoSize="TextChanges"
+                    FontSize="Medium"
+                    Margin="0"
+                    TextColor="#73845A"
+                    FontAttributes="Italic" />
             <StackLayout Orientation="Horizontal">
                 <Button Text="Отменить" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand" FontSize="Subtitle" 
                         BackgroundColor="{StaticResource Primary}"
-                        TextColor="#73845A"/>
+                        TextColor="#891d29"/>
 
-                <Button Text="Сохранить" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"
+                <Button Text="Сохранить" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand" FontSize="Subtitle" 
                         BackgroundColor="{StaticResource Primary}"
                         TextColor="#73845A"/>
             </StackLayout>

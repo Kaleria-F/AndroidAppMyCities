@@ -7,13 +7,16 @@
              x:Class="AndroidAppMyCities.Views.LoginPage"
              Title="Регистрация">
     <ContentPage.Content>
-        <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
-            <Button VerticalOptions="Center" Text="Скоро здесь появится возможность зарегистрироваться и участвовать в рейтинге" Command="{Binding LoginCommand}"
-                    FontSize="Subtitle" 
-                    BackgroundColor="{StaticResource Primary}"
-                    WidthRequest="240" 
-                    Margin="10,10,10,10"
-                    TextColor="#73845A"/>
+        <StackLayout Padding="20">
+            <Label Text="Скоро в этом разделе появится возможность зарегистрироваться и участвовать в общем рейтинге. Спасибо, что используете это приложени." FontSize="Medium" TextColor="#73845A"/>
+            <Label Text="Если у Вас есть предложения или пожелания, напишите нам:" FontSize="Medium" TextColor="#73845A"/>
+
+            <Button Text = "Написать разработчику" Clicked="OnWebsiteClicked"
+            FontSize="Subtitle" 
+            BackgroundColor="{StaticResource Primary}"
+            WidthRequest="240" 
+            Margin="0,10,10,0"
+            TextColor="#73845A"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

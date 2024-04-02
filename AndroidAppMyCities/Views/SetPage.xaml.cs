@@ -22,13 +22,7 @@ namespace AndroidAppMyCities.Views
             Navigation.PushAsync(new InfoPage());
         }
 
-		private void OnCityListDownloadClicked(object sender, EventArgs e)
-		{
-            
-
-        }
-
-		private void OnRegistrationClicked(object sender, EventArgs e)
+        private void OnRegistrationClicked(object sender, EventArgs e)
 		{
             Navigation.PushAsync(new LoginPage());
         }
@@ -37,5 +31,16 @@ namespace AndroidAppMyCities.Views
 		{
             Navigation.PushAsync(new FeedbackPage());
         }
-	}
+
+        /* Код для дальнешей модификации приложения, добаления кнопки "Выгрузить список городов"
+       private void OnCityListDownloadClicked(object sender, EventArgs e)
+       {
+       }
+
+               <Button Text="Выгрузить список городов" Clicked="OnCityListDownloadClicked"
+               FontSize="Subtitle" 
+               BackgroundColor="{StaticResource Primary}"
+               TextColor="#73845A"/>
+       */
+    }
 }

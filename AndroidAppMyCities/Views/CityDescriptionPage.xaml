@@ -31,6 +31,7 @@
                             Style="{DynamicResource ListItemDetailTextStyle}"
                             FontSize="14"
                             TextColor="#73845A"
+                            FontAttributes="Italic"
                             />
                     </StackLayout>
                 </DataTemplate>

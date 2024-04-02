@@ -5,16 +5,10 @@
              Title="Инструкция">
 
     <ScrollView>
-        <StackLayout Padding="10">
-            
-            <Image Source="instruction_image1.png" />
-            <Label Text="Описание для изображения 1" />
+        <StackLayout Orientation="Vertical">
 
-            <Image Source="instruction_image2.png" />
-            <Label Text="Описание для изображения 2" />
-
-           
         </StackLayout>
     </ScrollView>
+
 
 </ContentPage>
