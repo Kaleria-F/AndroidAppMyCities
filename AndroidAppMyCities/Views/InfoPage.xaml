@@ -6,7 +6,8 @@
 
     <ScrollView>
         <StackLayout Orientation="Vertical">
-
+            <Image Source="info_page1.png" VerticalOptions="Center" />
+            <Image Source="info_page2.png" VerticalOptions="Center" />
         </StackLayout>
     </ScrollView>
 
