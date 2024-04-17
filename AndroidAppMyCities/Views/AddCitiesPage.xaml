@@ -16,7 +16,11 @@
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Padding="5">
-                            <Label Text="{Binding .}" TextColor="#73845A" HorizontalOptions="StartAndExpand" FontAttributes="Italic" FontSize="Medium" />
+                            <Label Text="{Binding .}"
+                                   TextColor="#73845A"
+                                   HorizontalOptions="StartAndExpand"
+                                   FontAttributes="Italic"
+                                   FontSize="Medium" />
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
